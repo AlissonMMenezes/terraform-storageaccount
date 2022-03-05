@@ -6,14 +6,18 @@ resource "azurerm_storage_account" "sa" {
   account_replication_type = "GRS"
 
   blob_properties {
-    delete_retention_days = 7
-    container_delete_retention_policy = 7
+    delete_retention_policy {
+      days = 7
+    } 
+    container_delete_retention_policy{
+      days = 7
+    } 
   }
 
   identity {
     type = "SystemAssigned"
   }
-  
+
 }
 
 resource "azurerm_storage_container" "container" {
