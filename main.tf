@@ -4,14 +4,16 @@ resource "azurerm_storage_account" "sa" {
   location                 = var.location
   account_tier             = "Standard"
   account_replication_type = "GRS"
+  is_hns_enabled           = "true"
+
 
   blob_properties {
     delete_retention_policy {
       days = 7
-    } 
-    container_delete_retention_policy{
+    }
+    container_delete_retention_policy {
       days = 7
-    } 
+    }
   }
 
   identity {
@@ -25,7 +27,6 @@ resource "azurerm_storage_container" "container" {
   name                  = each.key
   storage_account_name  = azurerm_storage_account.sa.name
   container_access_type = "private"
-  is_hns_enabled        = "true"
 
 }
 
