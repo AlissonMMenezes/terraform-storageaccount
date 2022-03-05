@@ -13,3 +13,8 @@ variable "location" {
   description = "Resource Group Name"
   default     = "West Europe"
 }
+
+variable "containers" {
+  type        = list(any)
+  description = "Containers that must be created within the storage account"
+}

@@ -5,3 +5,10 @@ resource "azurerm_storage_account" "sa" {
   account_tier             = "Standard"
   account_replication_type = "GRS"
 }
+
+resource "azurerm_storage_container" "container" {
+  for_each              = var.containers
+  name                  = each.keys
+  storage_account_name  = azurerm_storage_account.sa.name
+  container_access_type = "private"
+}
