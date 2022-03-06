@@ -18,3 +18,9 @@ variable "containers" {
   type        = list(any)
   description = "Containers that must be created within the storage account"
 }
+
+variable "datalake" {
+  type        = bool
+  description = "Enable Azure Datalake Gen2"
+  default     = true
+}

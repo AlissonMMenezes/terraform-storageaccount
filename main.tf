@@ -31,6 +31,7 @@ resource "azurerm_storage_container" "container" {
 }
 
 resource "azurerm_storage_data_lake_gen2_filesystem" "datalake" {
+  count = var.datalake == true ? 1 : 0
   name               = "datalake"
   storage_account_id = azurerm_storage_account.sa.id
 
